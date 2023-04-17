@@ -1,6 +1,11 @@
 const express = require("express"); // commonjs
+const path = require("path");
 const app = express(); // app of express
 const port = 8081; // port
+
+// config template engine
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 // route
 app.get("/", (req, res) => {
@@ -8,7 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-  res.send("Home page");
+  res.render("index.ejs");
 });
 
 // start
