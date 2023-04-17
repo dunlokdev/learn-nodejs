@@ -1,0 +1,27 @@
+{
+  "name": "fullstack-backend-zero",
+  "version": "1.0.0",
+  "description": "Dunlok dev learn nodejs with ExpressJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dunlokdev/learn-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "author": "Dunlokdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dunlokdev/learn-nodejs/issues"
+  },
+  "homepage": "https://github.com/dunlokdev/learn-nodejs#readme",
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
