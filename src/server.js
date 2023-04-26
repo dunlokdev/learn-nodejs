@@ -8,6 +8,10 @@ const connection = require("./config/database");
 const app = express(); // app of express
 const port = process.env.PORT; // port
 
+// config req.body
+app.use(express.json());
+app.use(express.urlencoded());
+
 // simple query
 connection.query("SELECT * FROM Users", function (err, results, fields) {
   console.log("Check result = ", results); // results contains rows returned by server
