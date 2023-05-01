@@ -10,12 +10,12 @@ const port = process.env.PORT; // port
 
 // config req.body
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 // simple query
-connection.query("SELECT * FROM Users", function (err, results, fields) {
-  console.log("Check result = ", results); // results contains rows returned by server
-});
+// connection.query("SELECT * FROM Users", function (err, results, fields) {
+//   console.log("Check result = ", results); // results contains rows returned by server
+// });
 
 // config view engine
 configViewEngine(app);
