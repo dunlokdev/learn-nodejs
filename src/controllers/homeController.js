@@ -1,9 +1,10 @@
 const connection = require("../config/database");
+const { getAllUsers } = require("../services/userService");
 
-const getHomePage = (req, res) => {
-  // res.send("Hello World!");
+const getHomePage = async (req, res) => {
+  const results = await getAllUsers();
 
-  return res.render("home.ejs");
+  return res.render("home.ejs", { data: results });
 };
 
 const getCreatePage = (req, res) => {
