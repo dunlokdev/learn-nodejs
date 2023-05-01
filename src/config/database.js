@@ -1,6 +1,7 @@
 //! Import để sử dụng được biến env
 require("dotenv").config();
-const mysql = require("mysql2");
+// const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 
 // connection with traditional, it will create a new connection
 // const connection = mysql.createConnection({
