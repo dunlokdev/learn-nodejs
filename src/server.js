@@ -12,18 +12,21 @@ const port = process.env.PORT; // port
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// simple query
-// connection.query("SELECT * FROM Users", function (err, results, fields) {
-//   console.log("Check result = ", results); // results contains rows returned by server
-// });
-
 // config view engine
 configViewEngine(app);
 
 // route
-app.use(webRoutes);
+app.use("/", webRoutes);
 
-// start
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+(async () => {
+  try {
+    // * Test connection
+    await connection();
+    //* start server
+    app.listen(port, () => {
+      console.log(`Server Dunlok dev is running on port ${port}`);
+    });
+  } catch (error) {
+    console.log("An error ccurred in server.js, error: ", error);
+  }
+})();

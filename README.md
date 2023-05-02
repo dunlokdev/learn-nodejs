@@ -12,3 +12,11 @@ require("dotenv").config();
 // Cách dùng
 process.env.DB_HOST;
 ```
+
+# MongoDB
+
+Vì sử dụng Docker tạo DB nên dùng port 27018 tránh trùng port với mongodb server
+
+```
+mongodb://root:123456@localhost:27018
+```

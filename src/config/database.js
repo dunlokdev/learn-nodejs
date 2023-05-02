@@ -1,28 +1,24 @@
 //! Import để sử dụng được biến env
 require("dotenv").config();
 // const mysql = require("mysql2");
-const mysql = require("mysql2/promise");
+const mongoose = require("mongoose");
 
-// connection with traditional, it will create a new connection
-// const connection = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   port: process.env.DB_PORT, // do config database là '3307' --> mặc định khồng truyền là '3306'
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD, // default password: empty
-//   database: process.env.DB_NAME,
-// });
+const dbState = [
+  { value: 0, label: "Disconnected" },
+  { value: 1, label: "Connected" },
+  { value: 2, label: "Connecting" },
+  { value: 3, label: "Disconnecting" },
+];
 
-const connection = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT, // do config database là '3307' --> mặc định không truyền là '3306'
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD, // default password: empty
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
-  // maxIdle: 10, // max idle connections, the default value is the same as `connectionLimit`
-  // idleTimeout: 60000, // idle connections timeout, in milliseconds, the default value 60000
-  queueLimit: 0,
-});
+const connection = async () => {
+  const options = {
+    user: process.env.DB_USER,
+    pass: process.env.DB_PASSWORD,
+  };
+  console.log("Connecting to the database...please waiting me :)");
+  await mongoose.connect(process.env.DB_HOST, options);
+  const state = Number(mongoose.connection.readyState);
+  console.log(dbState.find((f) => f.value === state).label, "to database");
+};
 
 module.exports = connection;
