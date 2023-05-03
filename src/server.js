@@ -3,8 +3,8 @@ require("dotenv").config();
 const express = require("express"); // commonjs
 const configViewEngine = require("./config/viewEngine");
 const webRoutes = require("./routes/web");
+const apiRoutes = require("./routes/api");
 const connection = require("./config/database");
-const Kitten = require("./models/Kitten");
 
 const app = express(); // app of express
 const port = process.env.PORT; // port
@@ -18,9 +18,7 @@ configViewEngine(app);
 
 // route
 app.use("/", webRoutes);
-
-const cat = new Kitten({ name: "Loc loc" });
-cat.save();
+app.use("/v1/api/", apiRoutes);
 
 (async () => {
   try {
