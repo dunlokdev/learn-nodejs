@@ -10,6 +10,18 @@ const getUsersApi = async (req, res) => {
   });
 };
 
+const postCreateUserApi = async (req, res) => {
+  const { email, name, city } = req.body;
+
+  const user = await User.create({ email, name, city });
+  res.status(201).json({
+    errorCode: 0,
+    message: "Create a user successed",
+    data: user,
+  });
+};
+
 module.exports = {
   getUsersApi,
+  postCreateUserApi,
 };
