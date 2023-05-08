@@ -19,7 +19,7 @@ const postCreateUserApi = async (req, res) => {
 
     const user = await User.create({ email, name, city });
     return res.status(201).json({
-        errorCode: 1,
+        errorCode: 0,
         message: "Create a user successed",
         data: user,
     });
@@ -31,7 +31,7 @@ const putUpdateUserApi = async (req, res) => {
     const result = await User.updateOne({ _id: userId }, { email, name, city });
 
     return res.status(200).json({
-        errorCode: 1,
+        errorCode: 0,
         message: "Update a user successed",
         data: result,
     });
@@ -43,7 +43,7 @@ const deleteUserApi = async (req, res) => {
     const result = await User.deleteOne({ _id: userId });
 
     return res.status(200).json({
-        errorCode: 1,
+        errorCode: 0,
         message: `Delete a user has id = ${userId} successed`,
         data: result,
     });
@@ -58,14 +58,14 @@ const postUploadSingleFileApi = async (req, res) => {
 
     if (result.status === "success") {
         return res.status(200).json({
-            errorCode: 1,
+            errorCode: 0,
             path: result.path,
             message: `Upload single file is successed`,
         });
     }
 
     return res.status(400).json({
-        errorCode: 1,
+        errorCode: 0,
         message: `Upload single file is failed`,
     });
 };

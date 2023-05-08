@@ -8,6 +8,8 @@ const {
     postUploadMultipleFilesApi,
 } = require("../controllers/apiController");
 
+const { postCreateCustomerApi } = require("../controllers/customerController");
+
 const routerAPI = express.Router();
 
 routerAPI.get("/", (req, res) => {
@@ -33,5 +35,8 @@ routerAPI.post("/file", postUploadSingleFileApi);
 
 // Upload multiple file
 routerAPI.post("/files", postUploadMultipleFilesApi);
+
+// =============== API Customer ==================
+routerAPI.post("/customers", postCreateCustomerApi);
 
 module.exports = routerAPI;
